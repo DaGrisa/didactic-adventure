@@ -2,8 +2,8 @@ const EmployeeRepository = require("../model/employee-repository");
 const employeeRepository = new EmployeeRepository();
 
 module.exports = class EmployeeService {
-    getEmployees() {
+    async getEmployees() {
         // business logic here
-        return employeeRepository.getEmployees();
-    }
+        return await employeeRepository.getEmployees();
+    } 
 }
