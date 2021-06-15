@@ -6,4 +6,8 @@ module.exports = class EmployeeController {
         // coordinate interaction with domain here (f.e. call service methods)
         return await employeeService.getEmployees();
     }
+
+    throwError() {
+        throw new Error("Ohno - something went wrong on the server and the middleware catched it.");
+    }
 }
