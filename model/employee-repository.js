@@ -12,7 +12,10 @@ module.exports = class EmployeeRepository {
     async init() {
         const db = await this.openDb();
         await db.exec('CREATE TABLE IF NOT EXISTS employees (id INTEGER PRIMARY KEY, name TEXT NOT NULL);');
-        await db.exec('INSERT INTO employees VALUES (1,"Tony"),(2,"Lisa"),(3,"Michael"),(4,"Ginger");');
+        // https://nodejs.dev/learn/nodejs-the-difference-between-development-and-production
+        if (process.env.NODE_ENV === "development") {
+          await db.exec('INSERT INTO employees VALUES (1,"Tony"),(2,"Lisa"),(3,"Michael"),(4,"Ginger");');
+        }
     }
 
     async openDb () {
